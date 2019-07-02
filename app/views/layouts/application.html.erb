@@ -10,11 +10,15 @@
   </head>
 
   <body>
-      <% flash.each do |key, value| %>
-        <div class="<%= flash_class(key) %>" role="alert">
-          <%= value %>
-        </div>
-      <% end %>
+    <%- if user_signed_in? %>
+      <%= link_to 'Edit profile', edit_user_registration_path %>
+      <%= link_to ' Exit', destroy_user_session_path, method: :delete %>
+    <% end %>
+    <% flash.each do |key, value| %>
+      <div class="<%= flash_class(key) %>" role="alert">
+        <%= value %>
+      </div>
+    <% end %>
     <%= yield %>
   </body>
 </html>
