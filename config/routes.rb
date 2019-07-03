@@ -4,5 +4,7 @@ Rails.application.routes.draw do
   get 'welcome/index'
   root 'welcome#index'
 
-  resources :contacts_files
+  resources :contacts_files do
+    resources :field_columns
+  end
 end

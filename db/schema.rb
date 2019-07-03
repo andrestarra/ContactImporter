@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_03_134352) do
+ActiveRecord::Schema.define(version: 2019_07_03_204252) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -59,6 +59,19 @@ ActiveRecord::Schema.define(version: 2019_07_03_134352) do
     t.index ["user_id"], name: "index_contacts_files_on_user_id"
   end
 
+  create_table "field_columns", force: :cascade do |t|
+    t.integer "name"
+    t.integer "birthdate"
+    t.integer "phone_number"
+    t.integer "address"
+    t.integer "credit_card"
+    t.integer "email"
+    t.bigint "contacts_file_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["contacts_file_id"], name: "index_field_columns_on_contacts_file_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -75,4 +88,5 @@ ActiveRecord::Schema.define(version: 2019_07_03_134352) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "contacts", "users"
   add_foreign_key "contacts_files", "users"
+  add_foreign_key "field_columns", "contacts_files"
 end
