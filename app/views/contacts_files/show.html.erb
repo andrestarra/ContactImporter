@@ -1,0 +1,12 @@
+<p>
+  <strong>File:</strong>
+  <%= @contacts_file.csv_file %>
+</p>
+
+<p>
+  <strong>State:</strong>
+  <%= @contacts_file.state %>
+</p>
+
+<%= link_to 'Edit', edit_contacts_file_path(@contacts_file) %> |
+<%= link_to 'Back', contacts_files_path %>
