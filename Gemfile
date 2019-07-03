@@ -3,6 +3,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.3'
 
+gem "aws-sdk-s3", require: false
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'carrierwave', '>= 2.0.0.rc', '< 3.0'
 gem 'coffee-rails', '~> 4.2'

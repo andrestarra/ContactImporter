@@ -59,6 +59,22 @@ GEM
       public_suffix (>= 2.0.2, < 4.0)
     arel (9.0.0)
     ast (2.4.0)
+    aws-eventstream (1.0.3)
+    aws-partitions (1.184.0)
+    aws-sdk-core (3.58.0)
+      aws-eventstream (~> 1.0, >= 1.0.2)
+      aws-partitions (~> 1.0)
+      aws-sigv4 (~> 1.1)
+      jmespath (~> 1.0)
+    aws-sdk-kms (1.23.0)
+      aws-sdk-core (~> 3, >= 3.58.0)
+      aws-sigv4 (~> 1.1)
+    aws-sdk-s3 (1.44.0)
+      aws-sdk-core (~> 3, >= 3.58.0)
+      aws-sdk-kms (~> 1)
+      aws-sigv4 (~> 1.1)
+    aws-sigv4 (1.1.0)
+      aws-eventstream (~> 1.0, >= 1.0.2)
     bcrypt (3.1.13)
     bindex (0.7.0)
     bootsnap (1.4.4)
@@ -110,6 +126,7 @@ GEM
     jaro_winkler (1.5.3)
     jbuilder (2.9.1)
       activesupport (>= 4.2.0)
+    jmespath (1.4.0)
     json (2.2.0)
     listen (3.1.5)
       rb-fsevent (~> 0.9, >= 0.9.4)
@@ -282,6 +299,7 @@ PLATFORMS
   x64-mingw32
 
 DEPENDENCIES
+  aws-sdk-s3
   bootsnap (>= 1.1.0)
   byebug
   carrierwave (>= 2.0.0.rc, < 3.0)
