@@ -1,0 +1,25 @@
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Birthdate</th>
+    <th>Phone Number</th>
+    <th>Address</th>
+    <th>Credit Card</th>
+    <th>Email</th>
+  </tr>
+ 
+  <tr>
+    <td><%= field_column.name %></td>
+    <td><%= field_column.birthdate %></td>
+    <td><%= field_column.phone_number %></td>
+    <td><%= field_column.address %></td>
+    <td><%= field_column.credit_card %></td>
+    <td><%= field_column.email %></td>
+  </tr>
+</table>
+
+<p>
+  <%= link_to 'Destroy Field Column', [field_column.contacts_file, field_column],
+               method: :delete,
+               data: { confirm: 'Are you sure?' } %>
+</p>
