@@ -9,7 +9,7 @@
   <%= @contacts_file.status %>
 </p>
 
-<!--<%= @file_content %>-->
+<%= @table[0] %>
 
 <% if @contacts_file.field_column.nil? %>
   <h3>Add the column number in your file for each field.</h3>
@@ -45,6 +45,7 @@
 <% else %>
   <h3>Field Column</h3>
   <%= render @contacts_file.field_column %>
+  <%= link_to 'Proccess file', contacts_file_proccess_path(@contacts_file) %>
 <% end %>
 
 <%= link_to 'Back', contacts_files_path %>

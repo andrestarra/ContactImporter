@@ -1,0 +1,25 @@
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Birthdate</th>
+    <th>Phone Number</th>
+    <th>Address</th>
+    <th>Credit Card</th>
+    <th>Email</th>
+    <th></th>
+  </tr>
+
+  <% @contacts.each do |contact| %>
+    <tr>
+      <td><%= contact.name %></td>
+      <td><%= contact.birthdate %></td>
+      <td><%= contact.phone_number %></td>
+      <td><%= contact.address %></td>
+      <td><%= contact.credit_card %></td>
+      <td><%= contact.email %></td>
+      <td><%= link_to 'Destroy', contacts_path(contact),
+              method: :delete,
+              data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+  <% end %>
+</table>

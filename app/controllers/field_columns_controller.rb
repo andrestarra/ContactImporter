@@ -6,7 +6,7 @@ class FieldColumnsController < ApplicationController
     else
       flash[:alert] = 'Field Column not be created'
     end
-    redirect_to contacts_file_path(@contacts_file, headers: true)
+    redirect_to contacts_file_path(@contacts_file)
   end
 
   private

@@ -38,7 +38,7 @@ ActiveRecord::Schema.define(version: 2019_07_03_204252) do
 
   create_table "contacts", force: :cascade do |t|
     t.string "name"
-    t.date "birthdate"
+    t.string "birthdate"
     t.string "phone_number"
     t.string "address"
     t.string "credit_card"

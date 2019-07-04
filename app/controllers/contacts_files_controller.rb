@@ -1,22 +1,31 @@
 class ContactsFilesController < ApplicationController
-  before_action :find_contacts_file, except: %i[index new create]
+  before_action :find_contacts_file, except: %i[index new create proccess]
 
   def index
-    @contacts_files = ContactsFile.all
+    @contacts_files = ContactsFile.my_contacts_files(current_user)
   end
 
   def show
-    # file_path = ActiveStorage::Blob.service.send(:path_for, @contacts_file.csv_file.key)
-    # @file_content = CSV.open(file_path, 'r') { |csv| csv.first }
+    file_content = @contacts_file.csv_file.download
+    @table = CSV.parse(file_content, headers: false)
   end
 
-  def proccess_file
-    file = @contacts_file.csv_file
-    contacts= []
-    CSV.foreach(file, headers: true) do |row|
-      contacts << Contact.new(row.to_h)
+  def proccess
+    @contacts_file = ContactsFile.find(params[:contacts_file_id])
+    index = @contacts_file.field_column
+    file_content = @contacts_file.csv_file.download
+    CSV.parse(file_content, headers: true) do |row|
+      contact = Contact.new
+      contact.name = row[index.name]
+      contact.birthdate = row[index.birthdate]
+      contact.phone_number = row[index.phone_number]
+      contact.address = row[index.address]
+      contact.credit_card = row[index.credit_card]
+      contact.email = row[index.email]
+      contact.user_id = current_user.id
+      contact.save
     end
-    Contact.import(contacts)
+    redirect_to contacts_file_path(@contacts_file)
   end
 
   def new
