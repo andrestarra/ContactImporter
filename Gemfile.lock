@@ -97,6 +97,9 @@ GEM
     coffee-script-source (1.12.2)
     concurrent-ruby (1.1.5)
     crass (1.0.4)
+    credit_card_validations (3.5.0)
+      activemodel (>= 3, <= 6)
+      activesupport (>= 3, <= 6)
     database_cleaner (1.7.0)
     devise (4.6.2)
       bcrypt (~> 3.0)
@@ -303,6 +306,7 @@ DEPENDENCIES
   byebug
   carrierwave (>= 2.0.0.rc, < 3.0)
   coffee-rails (~> 4.2)
+  credit_card_validations
   database_cleaner
   devise
   factory_bot_rails

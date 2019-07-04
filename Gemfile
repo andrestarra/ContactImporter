@@ -7,6 +7,7 @@ gem "aws-sdk-s3", require: false
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'carrierwave', '>= 2.0.0.rc', '< 3.0'
 gem 'coffee-rails', '~> 4.2'
+gem 'credit_card_validations'
 gem 'devise'
 gem 'jbuilder', '~> 2.5'
 gem 'pg', '>= 0.18', '< 2.0'
