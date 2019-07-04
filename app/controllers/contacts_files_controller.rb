@@ -23,9 +23,9 @@ class ContactsFilesController < ApplicationController
       contact.credit_card = row[index.credit_card]
       contact.email = row[index.email]
       contact.user_id = current_user.id
-      contact.save
+      contact.save if contact.valid?
     end
-    redirect_to contacts_file_path(@contacts_file)
+    redirect_to contacts_path
   end
 
   def new

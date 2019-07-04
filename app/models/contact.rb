@@ -8,16 +8,17 @@ class Contact < ApplicationRecord
   validates :name, presence: true, format: { with: VALID_NAME_REGEX }
   validates :birthdate, presence: true, format: { with: VALID_DATE_REGEX }
   validates :phone_number, presence: true
-  validate :birthdate_valid
+  
+  after_validation :birthdate_valid
 
   scope :my_contacts, ->(current_user) { where(user_id: current_user.id) }
 
   def birthdate_valid
-    date = Date.parse(self.birthdate)
-    if !date
-      errors.add(:birthdate, 'is invalid.')
-    elsif date > DateTime.now
-      errors.add(:birthdate, 'can not be future.')
+    begin
+      date = Date.parse(self.birthdate)
+      errors.add(:birthdate, 'can not be future.') if date > DateTime.now
+    rescue ArgumentError
+      errors.add(:birthdate, 'is not a valid format.')
     end
   end
 end
