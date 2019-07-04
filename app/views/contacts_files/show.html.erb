@@ -1,12 +1,7 @@
+<h2>File</h2>
 <p>
-  <strong>File:</strong>
-  <%= @contacts_file.csv_file %>
+  <strong>Created at:</strong>
+  <%= @contacts_file.created_at.strftime("%Y-%m-%d") %>
 </p>
 
-<p>
-  <strong>State:</strong>
-  <%= @contacts_file.state %>
-</p>
-
-<%= link_to 'Edit', edit_contacts_file_path(@contacts_file) %> |
 <%= link_to 'Back', contacts_files_path %>

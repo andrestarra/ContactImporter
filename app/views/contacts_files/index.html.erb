@@ -1,0 +1,20 @@
+<h1>Listing Contacts Files</h1>
+<%= link_to 'New Contact File', new_contacts_file_path %>
+<table>
+  <tr>
+    <th>Csv File</th>
+    <th>Created at</th>
+    <th colspan="2"></th>
+  </tr>
+ 
+  <% @contacts_files.each do |contacts_file| %>
+    <tr>
+      <td><%= contacts_file.csv_file %></td>
+      <td><%= contacts_file.created_at.strftime("%Y-%m-%d") %></td>
+      <td><%= link_to 'Show', contacts_file_path(contacts_file) %></td>
+      <td><%= link_to 'Destroy', contacts_file_path(contacts_file),
+              method: :delete,
+              data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+  <% end %>
+</table>
