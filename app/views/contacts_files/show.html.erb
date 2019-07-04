@@ -1,7 +1,41 @@
+
 <h2>File</h2>
 <p>
   <strong>Created at:</strong>
   <%= @contacts_file.created_at.strftime("%Y-%m-%d") %>
 </p>
+
+<%= @file_content %>
+
+<h2>Add the column number in your file for each field.</h2>
+<%= form_with(model: [ @contacts_file, @contacts_file.build_field_column ], local: true) do |form| %>
+  <p>
+    <%= form.label :name %><br>
+    <%= form.number_field :name %>
+  </p>
+  <p>
+    <%= form.label :birthdate %><br>
+    <%= form.number_field :birthdate %>
+  </p>
+  <p>
+    <%= form.label :phone_number %><br>
+    <%= form.number_field :phone_number %>
+  </p>
+  <p>
+    <%= form.label :address %><br>
+    <%= form.number_field :address %>
+  </p>
+  <p>
+    <%= form.label :credit_card %><br>
+    <%= form.number_field :credit_card %>
+  </p>
+  <p>
+    <%= form.label :email %><br>
+    <%= form.number_field :email %>
+  </p>
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>
 
 <%= link_to 'Back', contacts_files_path %>
