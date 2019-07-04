@@ -1,5 +1,3 @@
-require 'csv'
-
 class ContactsFilesController < ApplicationController
   before_action :find_contacts_file, except: %i[index new create]
 
@@ -10,6 +8,15 @@ class ContactsFilesController < ApplicationController
   def show
     # file_path = ActiveStorage::Blob.service.send(:path_for, @contacts_file.csv_file.key)
     # @file_content = CSV.open(file_path, 'r') { |csv| csv.first }
+  end
+
+  def proccess_file
+    file = @contacts_file.csv_file
+    contacts= []
+    CSV.foreach(file, headers: true) do |row|
+      contacts << Contact.new(row.to_h)
+    end
+    Contact.import(contacts)
   end
 
   def new

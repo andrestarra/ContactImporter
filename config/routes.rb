@@ -7,4 +7,5 @@ Rails.application.routes.draw do
   resources :contacts_files do
     resources :field_columns
   end
+  post 'contacts_file/proccess_file'
 end
